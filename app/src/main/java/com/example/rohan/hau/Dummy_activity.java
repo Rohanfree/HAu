@@ -1,6 +1,9 @@
 package com.example.rohan.hau;
 
 import android.content.Intent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -52,10 +55,12 @@ public class Dummy_activity extends AppCompatActivity implements NavigationView.
                     }
                 });
     }
+    Ringtone r;
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
+        //Ringtone r = null;
 
         if (id == R.id.nav_camera) {
             //startActivity(new Intent(Dummy_activity.this,MainActivity.class));
@@ -63,8 +68,12 @@ public class Dummy_activity extends AppCompatActivity implements NavigationView.
             v.setText("you have been pressed");
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
+            Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+            r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+            r.play();
 
         } else if (id == R.id.nav_slideshow) {
+            r.stop();
 
         } else if (id == R.id.nav_manage) {
 
