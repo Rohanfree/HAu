@@ -77,6 +77,8 @@ public class Dummy_activity extends AppCompatActivity implements NavigationView.
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout1);
         drawer.closeDrawer(GravityCompat.START);
+        int a;
+        //hai my first commit
         return true;
 
     }
