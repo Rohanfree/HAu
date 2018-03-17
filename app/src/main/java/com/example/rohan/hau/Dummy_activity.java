@@ -73,6 +73,36 @@ public class Dummy_activity extends AppCompatActivity implements NavigationView.
         manager.notify(0, builder.build());
     }
 
+    void graph()
+    {
+        BarChart chart = (BarChart) findViewById(R.id.bar_chart);
+        ArrayList<BarEntry> BarEntry = new ArrayList<>();
+        BarEntry.add(new BarEntry(2f, 0));
+        BarEntry.add(new BarEntry(4f, 1));
+        BarEntry.add(new BarEntry(6f, 2));
+        BarEntry.add(new BarEntry(8f, 3));
+        BarEntry.add(new BarEntry(7f, 4));
+        BarEntry.add(new BarEntry(3f, 5));
+
+        BarDataSet dataSet = new BarDataSet(BarEntry,"Projects");
+        ArrayList<String> labels = new ArrayList<>();
+        labels.add("Jan");
+        labels.add("Feb");
+        labels.add("Mar");
+        labels.add("Apr");
+        labels.add("May");
+        labels.add("Jun");
+
+        BarData data = new BarData(labels,dataSet);
+        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        chart.setData(data);
+        chart.setDescription("No of Projects");
+
+
+
+    }
+
+    
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
