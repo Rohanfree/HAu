@@ -10,7 +10,10 @@
         tools:context="com.example.rohan.hau.MainActivity"
         android:layout_height="match_parent">
 
-
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="50dp">
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
@@ -222,5 +225,6 @@
             android:textSize="20sp" />
 
 
-    </RelativeLayout>
+</RelativeLayout>
 
+</RelativeLayout>

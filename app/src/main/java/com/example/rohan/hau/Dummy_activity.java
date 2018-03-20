@@ -18,11 +18,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.User;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class Dummy_activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     TextView v;
@@ -30,7 +37,7 @@ public class Dummy_activity extends AppCompatActivity implements NavigationView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dummy_activity);
-        v=(TextView)findViewById(R.id.how);
+        v=(TextView)findViewById(R.id.consumer);
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout1);
@@ -109,10 +116,11 @@ public class Dummy_activity extends AppCompatActivity implements NavigationView.
 
         if (id == R.id.nav_camera) {
             //startActivity(new Intent(Dummy_activity.this,MainActivity.class));
-
-            v.setText("you have been pressed");
+            startActivity(new Intent(Dummy_activity.this,MainActivity.class));
+          //  v.setText("you have been pressed");
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
+
 
         } else if (id == R.id.nav_slideshow) {
 
