@@ -36,6 +36,7 @@ import java.util.ArrayList;
 
 public class Dummy_activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     TextView v;
+    ArrayList<Reading> read=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,9 +58,13 @@ public class Dummy_activity extends AppCompatActivity implements NavigationView.
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             Reading re=snapshot.getValue(Reading.class);
-                            v.setText(""+v.getText()+""+re.time+"@@"+re.value+"\n");
+                            read.add(re);
+
+
                             //Toast.makeText(Dummy_activity.this,""+re.time+re.value,Toast.LENGTH_LONG).show();
                         }
+                        v.setText("the data is ready to be displayed");
+
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
@@ -86,7 +91,7 @@ public class Dummy_activity extends AppCompatActivity implements NavigationView.
 
     void graph()
     {
-        BarChart chart = (BarChart) findViewById(R.id.bar_chart);
+       // BarChart chart = (BarChart) findViewById(R.id.bar_chart);
         ArrayList<BarEntry> BarEntry = new ArrayList<>();
         BarEntry.add(new BarEntry(2f, 0));
         BarEntry.add(new BarEntry(4f, 1));
@@ -106,8 +111,8 @@ public class Dummy_activity extends AppCompatActivity implements NavigationView.
 
         BarData data = new BarData(labels,dataSet);
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        chart.setData(data);
-        chart.setDescription("No of Projects");
+        //chart.setData(data);
+        //chart.setDescription("No of Projects");
 
 
 
@@ -117,6 +122,7 @@ public class Dummy_activity extends AppCompatActivity implements NavigationView.
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
+        //Ringtone r = null;
 
         if (id == R.id.nav_camera) {
             //startActivity(new Intent(Dummy_activity.this,MainActivity.class));
@@ -133,6 +139,11 @@ public class Dummy_activity extends AppCompatActivity implements NavigationView.
             r.stop();
 
         } else if (id == R.id.nav_manage) {
+            v.setText("");
+            int k=read.size();
+            for(int i=0;i<k;i++)
+                v.setText(""+v.getText()+"\n"+read.get(i).time+read.get(i).value);
+
 
         } else if (id == R.id.nav_share) {
 
