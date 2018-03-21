@@ -1,6 +1,6 @@
 package com.example.rohan.hau;
 
 public class Reading {
-    String time;
-    int value;
+    public String time;
+    public int value;
 }
