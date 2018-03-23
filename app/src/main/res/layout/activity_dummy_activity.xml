@@ -12,6 +12,7 @@
         layout="@layout/app_bar_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    <include layout="@layout/activity_main2" />
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
@@ -25,4 +26,16 @@
 
     </android.support.design.widget.NavigationView>
 
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/bar_chart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
 </android.support.v4.widget.DrawerLayout>
+

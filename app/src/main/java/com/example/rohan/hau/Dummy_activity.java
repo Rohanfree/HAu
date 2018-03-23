@@ -41,7 +41,7 @@ public class Dummy_activity extends AppCompatActivity implements NavigationView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dummy_activity);
-        v=(TextView)findViewById(R.id.consumer);
+        //v=(TextView)findViewById(R.id.consumer);
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout1);
@@ -63,7 +63,7 @@ public class Dummy_activity extends AppCompatActivity implements NavigationView.
 
                             //Toast.makeText(Dummy_activity.this,""+re.time+re.value,Toast.LENGTH_LONG).show();
                         }
-                        v.setText("the data is ready to be displayed");
+//                        v.setText("the data is ready to be displayed");
 
                     }
                     @Override
@@ -139,10 +139,10 @@ public class Dummy_activity extends AppCompatActivity implements NavigationView.
             r.stop();
 
         } else if (id == R.id.nav_manage) {
-            v.setText("");
+          //  v.setText("");
             int k=read.size();
             for(int i=0;i<k;i++)
-                v.setText(""+v.getText()+"\n"+read.get(i).time+read.get(i).value);
+            //    v.setText(""+v.getText()+"\n"+read.get(i).time+read.get(i).value);
 
 
         } else if (id == R.id.nav_share) {
@@ -161,3 +161,66 @@ public class Dummy_activity extends AppCompatActivity implements NavigationView.
     }
 
 }
+    // first bar graph
+   /* BarChart chart = (BarChart) findViewById(R.id.bar_chart);
+    ArrayList<BarEntry> BarEntry = new ArrayList<>();
+        BarEntry.add(new BarEntry(2f, 0));
+                BarEntry.add(new BarEntry(4f, 1));
+                BarEntry.add(new BarEntry(6f, 2));
+                BarEntry.add(new BarEntry(8f, 3));
+                BarEntry.add(new BarEntry(7f, 4));
+                BarEntry.add(new BarEntry(3f, 5));
+
+                BarDataSet dataSet = new BarDataSet(BarEntry,"Projects");
+                ArrayList<String> labels = new ArrayList<>();
+        labels.add("Jan");
+        labels.add("Feb");
+        labels.add("Mar");
+        labels.add("Apr");
+        labels.add("May");
+        labels.add("Jun");
+        labels.add("Jul");
+        labels.add("Aug");
+        labels.add("Sep");
+        labels.add("Oct");
+        labels.add("Nov");
+        labels.add("Dec");
+
+
+        BarData data = new BarData(labels,dataSet);
+        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        chart.setData(data);
+        chart.setDescription("No of Projects");
+       */
+
+
+   // second line graph
+/*
+ // in this example, a LineChart is initialized from xml
+        LineChart lineChart = (LineChart) findViewById(R.id.chart);
+        ArrayList<Entry> entries = new ArrayList<>();
+        entries.add(new Entry(4f, 0));
+        entries.add(new Entry(8f, 1));
+        entries.add(new Entry(6f, 2));
+        entries.add(new Entry(2f, 3));
+        entries.add(new Entry(18f, 4));
+        entries.add(new Entry(9f, 5));
+
+        LineDataSet dataset = new LineDataSet(entries,"days");
+
+        ArrayList<String> labels = new ArrayList<>();
+        labels.add("MON");
+        labels.add("TUE");
+        labels.add("WED");
+        labels.add("THU");
+        labels.add("FRI");
+        labels.add("SUN");
+
+        LineData data = new LineData(labels, dataset);
+        lineChart.setData(data); // set the data and list of lables into chart
+        // lineChart.
+        lineChart.setDescription("Description");  // set the description
+ */
+
+
+
