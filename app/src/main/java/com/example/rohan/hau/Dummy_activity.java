@@ -89,7 +89,7 @@ public class Dummy_activity extends AppCompatActivity implements NavigationView.
         manager.notify(0, builder.build());
     }
 
-    void graph()
+    /*void graph()
     {
        // BarChart chart = (BarChart) findViewById(R.id.bar_chart);
         ArrayList<BarEntry> BarEntry = new ArrayList<>();
@@ -116,7 +116,7 @@ public class Dummy_activity extends AppCompatActivity implements NavigationView.
 
 
 
-    }
+    }*/
 
 
     @Override
