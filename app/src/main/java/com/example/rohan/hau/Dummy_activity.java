@@ -38,6 +38,8 @@ import java.util.ArrayList;
 public class Dummy_activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     TextView v;
     ArrayList<Reading> read=new ArrayList<>();
+    ArrayList<BarEntry> BarEntry = new ArrayList<>();
+    ArrayList<String> labels = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -162,11 +164,23 @@ public class Dummy_activity extends AppCompatActivity implements NavigationView.
     }
     public void day(View v)
     {
-        display_day(""+dayedit.getText());
+        display_day("02");
         bar_graph();
     }
+    //plotgraph bargraph
+    public void bar_graph()
+    {
+        BarChart chart = (BarChart) findViewById(R.id.barchart);
+        BarDataSet dataSet = new BarDataSet(BarEntry,"UNITS");
+        //labels.clear();BarEntry.clear();
+        BarData data = new BarData(labels,dataSet);
+        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        chart.setData(data);
+        chart.setDescription("HOURS");
+
+    }
     public void display_day(String day) {
-        entries.clear();
+        BarEntry.clear();
         labels.clear();
         int c = 0;
 
