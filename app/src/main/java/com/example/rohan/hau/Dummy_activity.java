@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -158,6 +159,29 @@ public class Dummy_activity extends AppCompatActivity implements NavigationView.
         //hai my first commit
         return true;
 
+    }
+    public void day(View v)
+    {
+        display_day(""+dayedit.getText());
+        bar_graph();
+    }
+    public void display_day(String day) {
+        entries.clear();
+        labels.clear();
+        int c = 0;
+
+        int k = read.size(), newreading;
+        for(int i=1;i<k;i++)
+        {
+
+            if(read.get(i).time.split(":")[1].equals(day.split("/")[0])&&read.get(i).time.split(":")[2].equals(day.split("/")[1]))
+            {
+                newreading = (read.get(i).value) - read.get(i-1).value;
+                BarEntry.add(new BarEntry(newreading,c));
+                labels.add(new String("" + read.get(i).time.split(":")[3]));
+                c++;
+            }
+        }
     }
 
 }
