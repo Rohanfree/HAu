@@ -18,6 +18,10 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -40,7 +44,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         mAuth = FirebaseAuth.getInstance();
 
-        FirebaseUser user1=mAuth.getCurrentUser();
+        final FirebaseUser user1=mAuth.getCurrentUser();
         //NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View hView =  navigationView.getHeaderView(0);
         TextView nav_user = (TextView)hView.findViewById(R.id.thechanger);
@@ -48,6 +52,34 @@ public class MainActivity extends AppCompatActivity
         ImageView him=(ImageView)hView.findViewById(R.id.imageView);
         //him.setImageResource(R.drawable.logo);
 
+        FirebaseDatabase.getInstance().getReference().child("raspberry").child("admno6512")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            user use = snapshot.getValue(user.class);
+                            //v.setText(""+v.getText()+""+re.time+"@@"+re.value+"\n");
+                            //Toast.makeText(Dummy_activity.this,""+re.time+re.value,Toast.LENGTH_LONG).show();
+                            if(user1.getEmail().equals(use.address)) {
+                                TextView v=(TextView)findViewById(R.id.n1);
+                                v.setText(""+use.name);
+                                v=(TextView)findViewById(R.id.textView4);
+                                v.setText(""+use.cno);
+                                v=(TextView)findViewById(R.id.textView5);
+                                v.setText(""+use.mobile);
+                                v=(TextView)findViewById(R.id.textView6);
+                                v.setText(""+use.piname);
+                            }
+
+
+
+
+                        }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
     }
 
     @Override
@@ -109,3 +141,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 }
+///////////////////////////////////////////////////////////////////////////////////////
+
+
