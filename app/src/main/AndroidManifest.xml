@@ -12,9 +12,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".Dummy_activity" />
         <activity android:name=".Main2Activity">
             <intent-filter>
@@ -23,6 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Temp_activity"
+            android:label="@string/title_activity_temp_activity"></activity>
     </application>
 
 </manifest>

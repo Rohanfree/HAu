@@ -1,5 +1,6 @@
 package com.example.rohan.hau;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -51,8 +52,42 @@ public class MainActivity extends AppCompatActivity
         nav_user.setText(user1.getDisplayName());
         ImageView him=(ImageView)hView.findViewById(R.id.imageView);
         //him.setImageResource(R.drawable.logo);
+        FirebaseDatabase.getInstance().getReference().child("raspberry").child("admno6689").orderByKey().limitToLast(1).addListenerForSingleValueEvent(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Reading re;
+                TextView t=(TextView)findViewById(R.id.textView9);
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    re=snapshot.getValue(Reading.class);
+                    int units=re.value-2000;
+                    t.setText(t.getText()+""+units+"units");
+                    t=(TextView)findViewById(R.id.textView13);
+                    if(units<=300){
+                        t.setText(""+(units*5)+"/-");
+                    }
+                    else if(units<=400){
+                        t.setText(""+(units*5.70)+"/-");
+                    }
+                    else if(units<=500){
+                        t.setText(""+(units*6.10)+"/-");
+                    }
+                    else{
+                        t.setText(""+(units*7.5)+"/-");
+                    }
+                }
 
-        FirebaseDatabase.getInstance().getReference().child("raspberry").child("admno6512")
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                //Handle possible errors.
+            }
+        });
+
+
+        FirebaseDatabase.getInstance().getReference().child("user")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
